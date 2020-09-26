@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To start the database in Docker:
+```bash
+docker-compose up
+```
+To setup the database:
+```bash
+rails db:setup
+```
 
-Things you may want to cover:
 
-* Ruby version
+To compile the contetns of `app/javascript`:
+```bash
+bin/webpack
+```
 
-* System dependencies
+To run compile server:
 
-* Configuration
+```bash
+bin/webpack-dev-server
+```
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
