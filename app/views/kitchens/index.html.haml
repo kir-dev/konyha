@@ -1,0 +1,18 @@
+%p#notice= notice
+%h1 Kitchens
+%button.bg-blue-500.hover:bg-blue-700.text-white.font-bold.py-2.px-4.rounded
+  Button
+%table
+  %thead
+    %tr
+      %th Floor
+      %th{:colspan => "3"}
+  %tbody
+    - @kitchens.each do |kitchen|
+      %tr
+        %td= kitchen.floor
+        %td= link_to 'Show', kitchen
+        %td= link_to 'Edit', edit_kitchen_path(kitchen)
+        %td= link_to 'Destroy', kitchen, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Kitchen', new_kitchen_path

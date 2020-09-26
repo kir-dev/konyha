@@ -1,0 +1,14 @@
+= form_with(model: kitchen, local: true) do |form|
+  - if kitchen.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(kitchen.errors.count, "error")
+        prohibited this kitchen from being saved:
+      %ul
+        - kitchen.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :floor
+    = form.number_field :floor
+  .actions
+    = form.submit
