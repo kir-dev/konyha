@@ -1,0 +1,19 @@
+= form_for @appliance_comment do |f|
+  - if @appliance_comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@appliance_comment.errors.count, "error")} prohibited this appliance_comment from being saved:"
+      %ul
+        - @appliance_comment.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :category
+    = f.number_field :category
+  .field
+    = f.label :body
+    = f.text_area :body
+  .field
+    = f.label :appliance
+    = f.text_field :appliance
+  .actions
+    = f.submit 'Save'

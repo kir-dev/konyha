@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Category:
+  = @appliance_comment.category
+%p
+  %b Body:
+  = @appliance_comment.body
+%p
+  %b Appliance:
+  = @appliance_comment.appliance
+
+= link_to 'Edit', edit_appliance_comment_path(@appliance_comment)
+\|
+= link_to 'Back', appliance_comments_path

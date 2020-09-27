@@ -1,0 +1,2 @@
+module ApplianceCommentsHelper
+end
