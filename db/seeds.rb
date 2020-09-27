@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+18.times do |t|
+  Kitchen.create(floor: t)
+end
+
+basic_applaince = ['sütő', 'mikró']
+
+Kitchen.all.each do |kitchen|
+  basic_applaince.each do |appliance|
+    Appliance.create(name: appliance,
+                     category: Appliance.categories.values.sample,
+                     status: Appliance.statuses.values.sample,
+                     description:"Ez egy eszköz leírása.",
+                     kitchen: kitchen)
+  end
+end
