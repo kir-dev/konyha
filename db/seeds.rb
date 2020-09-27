@@ -21,3 +21,9 @@ Kitchen.all.each do |kitchen|
                      kitchen: kitchen)
   end
 end
+
+10.times do |t|
+  ApplianceComment.create(body:      'Kommnet teste',
+                          category:  ApplianceComment.categories.values.sample,
+                          appliance: Appliance.all.sample)
+end
