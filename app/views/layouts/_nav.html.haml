@@ -1,0 +1,13 @@
+.md:col-span-1.md:flex.md:justify-end.bg-white
+  %nav.md:text-right
+    .flex.justify-between.items-center
+      %h1.font-bold.uppercase.p-4
+        = link_to "KonyhaSCH", root_path, class: "hover:text-blue-700 tracking-widest"
+      #burger.px-4.cursor-pointer.md:hidden
+        %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24"}
+          %path{:d => "M4 6h16M4 12h16M4 18h16"}
+    %ul#menu.text-md.mt-4.hidden.md:block
+      %li.py-1
+        = link_to "Konyhák", kitchens_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
+      %li.py-2
+        = link_to "AuthSCH belépés", '#', class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
