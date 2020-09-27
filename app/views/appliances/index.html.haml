@@ -1,0 +1,29 @@
+%h1 Listing appliances
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Category
+      %th Status
+      %th Description
+      %th Kitchen
+      %th
+      %th
+      %th
+
+  %tbody
+    - @appliances.each do |appliance|
+      %tr
+        %td= appliance.name
+        %td= appliance.category
+        %td= appliance.status
+        %td= appliance.description
+        %td= appliance.kitchen
+        %td= link_to 'Show', appliance
+        %td= link_to 'Edit', edit_appliance_path(appliance)
+        %td= link_to 'Destroy', appliance, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Appliance', new_appliance_path

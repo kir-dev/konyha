@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @appliance.name
+%p
+  %b Category:
+  = @appliance.category
+%p
+  %b Status:
+  = @appliance.status
+%p
+  %b Description:
+  = @appliance.description
+%p
+  %b Kitchen:
+  = @appliance.kitchen
+
+= link_to 'Edit', edit_appliance_path(@appliance)
+\|
+= link_to 'Back', appliances_path
