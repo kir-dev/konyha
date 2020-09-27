@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %strong Floor:
+  = @kitchen.floor
+= link_to 'Edit', edit_kitchen_path(@kitchen)
+|
+= link_to 'Back', kitchens_path
