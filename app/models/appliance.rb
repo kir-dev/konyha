@@ -6,4 +6,6 @@ class Appliance < ApplicationRecord
 
   enum category: %i[basic extra]
   enum status: %i[operational broken]
+
+  include ApplianceStateMachine
 end
