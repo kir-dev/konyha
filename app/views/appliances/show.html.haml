@@ -14,7 +14,11 @@
   = @appliance.description
 %p
   %b Kitchen:
-  = @appliance.kitchen
+  = @appliance.kitchen.floor
+- @appliance.comments.each do |comment|
+  %div
+    = link_to comment.body, appliance_comment_path(comment)
+= render 'appliance_comments/compact_form', {appliance_comment: @new_appliance_comment}
 
 = link_to 'Edit', edit_appliance_path(@appliance)
 \|

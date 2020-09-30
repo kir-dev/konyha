@@ -4,12 +4,13 @@ class AppliancesController < ApplicationController
   # GET /appliances
   # GET /appliances.json
   def index
-    @appliances = Appliance.all
+    @appliances = Appliance.all.includes(:kitchen)
   end
 
   # GET /appliances/1
   # GET /appliances/1.json
   def show
+    @new_appliance_comment = ApplianceComment.new(appliance: @appliance)
   end
 
   # GET /appliances/new
