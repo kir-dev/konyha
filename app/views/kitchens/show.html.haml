@@ -1,6 +1,10 @@
 %p
   %strong Floor:
   = @kitchen.floor
+- @kitchen.appliances.each do |appliance|
+  %div
+    = link_to appliance.name, appliance_path(appliance)
 .mt-4
   = link_to 'Edit', edit_kitchen_path(@kitchen), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
   = link_to 'Back', kitchens_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+

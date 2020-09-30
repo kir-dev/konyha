@@ -10,20 +10,21 @@
   Kitchen.create(floor: t)
 end
 
-basic_applaince = ['sütő', 'mikró']
+basic_applaince_names = ['sütő', 'mikró']
 
 Kitchen.all.each do |kitchen|
-  basic_applaince.each do |appliance|
-    Appliance.create(name: appliance,
-                     category: Appliance.categories.values.sample,
-                     status: Appliance.statuses.values.sample,
-                     description:"Ez egy eszköz leírása.",
-                     kitchen: kitchen)
+  basic_applaince_names.each do |appliance_name|
+    appliance = Appliance.create(name:        appliance_name,
+                                 category:    Appliance.categories.values.sample,
+                                 status:      Appliance.statuses.values.sample,
+                                 description: "Ez egy eszköz leírása.",
+                                 kitchen:     kitchen)
+    10.times do |t|
+      ApplianceComment.create(body:      'Komment teste',
+                              category:  ApplianceComment.categories.values.sample,
+                              appliance: appliance)
+    end
+
   end
 end
 
-10.times do |t|
-  ApplianceComment.create(body:      'Kommnet teste',
-                          category:  ApplianceComment.categories.values.sample,
-                          appliance: Appliance.all.sample)
-end

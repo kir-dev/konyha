@@ -1,0 +1,19 @@
+= form_for appliance_comment do |f|
+  - if appliance_comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(appliance_comment.errors.count, "error")} prohibited this appliance_comment from being saved:"
+      %ul
+        - appliance_comment.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :category
+    = collection_select(:appliance_comment, :category, ApplianceComment.categories.to_a, Proc.new{|x| x[0]}, Proc.new{|x| x[0]}, prompt: true)
+
+  .field
+    = f.label :body
+    = f.text_area :body
+  .field
+    = f.hidden_field(:appliance_id ,value: f.object.appliance.id)
+  .actions
+    = f.submit 'Save'
