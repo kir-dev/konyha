@@ -78,6 +78,8 @@ GEM
     crass (1.0.6)
     erubi (1.9.0)
     erubis (2.7.0)
+    faker (2.14.0)
+      i18n (>= 1.6, < 2)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -223,6 +225,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  faker (~> 2.14)
   haml (~> 5.1)
   haml-rails (~> 2.0, >= 2.0.1)
   jbuilder (~> 2.7)
