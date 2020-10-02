@@ -9,7 +9,11 @@ require("@rails/activestorage").start()
 require("channels")
 require("css/application.scss")
 
-
+document.addEventListener("DOMContentLoaded", function(event) {
+    document.getElementsByClassName('language_selector')[0].addEventListener('change', (event)=>{
+        console.log(event.target.value);
+    });
+});
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

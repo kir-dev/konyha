@@ -1,9 +1,9 @@
 .md:col-span-1.md:flex.md:justify-end.bg-white
   %nav.md:text-right
     .flex.justify-between.items-center
-      %select
+      %select{class: 'language_selector'}
         - @languages.each do |lang|
-          %option{value: t(lang), selected: params[:locale] == lang}= t(lang)
+          %option{value: lang, selected: params[:locale] == lang}= t(lang)
       %h1.font-bold.uppercase.p-4
         = link_to "KonyhaSCH", root_path, class: "hover:text-blue-700 tracking-widest"
       #burger.px-4.cursor-pointer.md:hidden
