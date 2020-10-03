@@ -2,8 +2,7 @@
   %nav.md:text-right
     .flex.justify-between.items-center
       %select{class: 'language_selector'}
-        - @languages.each do |lang|
-          %option{value: lang, selected: params[:locale] == lang}= t(lang)
+        = options_for_select(@languages.map { |lang| [t(lang), lang] }, params[:locale])
       %h1.font-bold.uppercase.p-4
         = link_to "KonyhaSCH", root_path, class: "hover:text-blue-700 tracking-widest"
       #burger.px-4.cursor-pointer.md:hidden

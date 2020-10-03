@@ -9,9 +9,16 @@ require("@rails/activestorage").start()
 require("channels")
 require("css/application.scss")
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("turbolinks:load", function(event) {
     document.getElementsByClassName('language_selector')[0].addEventListener('change', (event)=>{
         console.log(event.target.value);
+        if (document.location.search.length !== 0) { // If there is already a querystring
+            console.log("new: " + document.location.search.replace(/locale=[a-z]+/, 'locale=' + event.target.value));
+            document.location.search = document.location.search.replace(/locale=[a-z]+/, 'locale=' + event.target.value);
+        } else {
+            console.log("new: " + '?locale=' + event.target.value);
+            document.location.search = '?locale=' + event.target.value;
+        }
     });
 });
 
