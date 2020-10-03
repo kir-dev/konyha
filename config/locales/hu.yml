@@ -1,5 +1,9 @@
 hu:
+  common:
+    confirm_message: Biztos vagy benne?
   kitchen:
     kitchens: Konyhák
+    floor: Emelet
+    create: Új konyha
   hu: Magyar
   en: Angol

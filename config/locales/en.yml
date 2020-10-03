@@ -29,7 +29,11 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 en:
+  common:
+    confirm_message: Are you sure?
   kitchen:
     kitchens: Kitchens
+    floor: Floor
+    create: New kitchen
   hu: Hungarian
   en: English
