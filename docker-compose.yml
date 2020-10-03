@@ -1,12 +1,33 @@
-version: '3.1'
-
+version: '3.3'
 services:
-
   db:
-    image: postgres
+    image: postgres:13.0
     restart: always
     environment:
       POSTGRES_USER: konyhasch
       POSTGRES_PASSWORD: CHANGE-ME
+    volumes:
+      - database_folder:/var/lib/postgresql/data
+    networks:
+      - konyha_network
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment:
+      - RAILS_SERVE_STATIC_FILES=true
+      - RAILS_ENV=production
+      - KONYHA_DATABASE_PASSWORD=CHANGE-ME
+      - DATABASE_HOST=db
+    restart: always
     ports:
-      - 5433:5432
+      - "3444:3000"
+    networks:
+      - konyha_network
+    depends_on:
+      - db
+networks:
+  konyha_network:
+volumes:
+  database_folder:
+    external:
+      name: konyhasch_database

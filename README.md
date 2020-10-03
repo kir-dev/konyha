@@ -10,6 +10,7 @@ rails db:setup
 ```
 
 
+
 To compile the contetns of `app/javascript`:
 ```bash
 bin/webpack
@@ -21,5 +22,14 @@ To run compile server:
 bin/webpack-dev-server
 ```
 
+Docker
+
+```bash
+docker volume create --name=konyhasch_database`
+```
+
+```bash
+docker-compose up --build
+```
 
 

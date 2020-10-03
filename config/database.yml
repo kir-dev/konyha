@@ -17,8 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: 127.0.0.1
-  port: 5433
+  host: <%= ENV['DATABASE_HOST'] %>
   username: konyhasch
   password: CHANGE-ME
   # For details on connection pooling, see Rails configuration guide
@@ -85,5 +84,5 @@ test:
 production:
   <<: *default
   database: konyha_production
-  username: konyha
+  username: konyhasch
   password: <%= ENV['KONYHA_DATABASE_PASSWORD'] %>
