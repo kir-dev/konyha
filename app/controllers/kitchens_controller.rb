@@ -4,7 +4,7 @@ class KitchensController < ApplicationController
   # GET /kitchens
   # GET /kitchens.json
   def index
-    @kitchens = Kitchen.all
+    @kitchens = Kitchen.all.sort_by(&:floor)
   end
 
   # GET /kitchens/1

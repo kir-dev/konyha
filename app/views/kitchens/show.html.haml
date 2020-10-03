@@ -4,15 +4,15 @@
       %strong= "#{@kitchen.floor}. szinti konyha"
   .flex-auto.mb-4
     .text-right.py-2
-      = link_to 'Módosítás', edit_kitchen_path(@kitchen), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      = link_to 'Módosítás', edit_kitchen_path(@kitchen), class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
 
 .mb-4.text-lg.md:text-xl
   A szint eszközei:
 
 .w-full
   - @kitchen.appliances.each do |appliance|
-    - bg_color = appliance.status == "operational" ? "bg-green-600" : "bg-red-600"
-    = link_to appliance, class: "flex flex-wrap items-center cursor-pointer my-1 text-white shadow hover:text-gray-700 hover:bg-white rounded " + bg_color do
+    - color = appliance.status == "operational" ? "green" : "red"
+    = link_to appliance, class: "flex flex-wrap items-center cursor-pointer my-1 text-white shadow hover:bg-"+color+"-500 bg-"+color+"-600 rounded " do
       .flex-auto.p-3.break-words
         %span.md:text-lg
           %strong
@@ -24,4 +24,4 @@
         = appliance.status
 
 .mt-10
-  = link_to 'Vissza', kitchens_path, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+  = link_to 'Vissza', kitchens_path, class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
