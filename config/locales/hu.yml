@@ -1,9 +1,16 @@
 hu:
   common:
     confirm_message: Biztos vagy benne?
+    kitchen: Konyha
+    close: Bezárás
   kitchen:
     kitchens: Konyhák
     floor: Emelet
-    create: Új konyha
+    create: Új Konyha
   hu: Magyar
   en: Angol
+  nav:
+    kitchens: Konyhák
+    devices: Eszközök
+    device_comments: Eszköz Kommentek
+    authsch_login: AuthSCH Belépés

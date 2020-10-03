@@ -31,9 +31,16 @@
 en:
   common:
     confirm_message: Are you sure?
+    kitchen: Kitchen
+    close: Close
   kitchen:
     kitchens: Kitchens
     floor: Floor
-    create: New kitchen
+    create: New Kitchen
   hu: Hungarian
   en: English
+  nav:
+    kitchens: Kitchens
+    devices: Devices
+    device_comments: Device Comments
+    authsch_login: AuthSCH Login

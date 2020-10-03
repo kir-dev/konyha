@@ -10,10 +10,10 @@
           %path{:d => "M4 6h16M4 12h16M4 18h16"}
     %ul#menu.text-md.mt-4.hidden.md:block
       %li.py-1
-        = link_to "Konyhák", kitchens_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
+        = link_to t('nav.kitchens'), kitchens_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
       %li.py-2
-        = link_to "Eszközök", appliances_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
+        = link_to t('nav.devices'), appliances_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
       %li.py-3
-        = link_to "Eszköz kommentek", appliance_comments_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
+        = link_to t('nav.device_comments'), appliance_comments_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
       %li.py-4
-        = link_to "AuthSCH belépés", '#', class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
+        = link_to t('nav.authsch_login'), '#', class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"

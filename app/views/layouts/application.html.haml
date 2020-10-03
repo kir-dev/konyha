@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}/
-    %title Konyha
+    %title= t('common.kitchen')
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -22,7 +22,7 @@
             .bg-teal-100.border-t-4.border-teal-500.rounded-b.text-teal-900.px-4.py-3.shadow-md{:role => "alert"}
               %button#close-notice.bg-transparent.hover:bg-red-200.float-right.p-1.rounded
                 %svg.fill-current.h-4.w-4.text-red-600{:role => "button", :viewbox => "2 2 16 16", :xmlns => "http://www.w3.org/2000/svg"}
-                  %title Close
+                  %title= t('common.close')
                   %path{:d => "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"}
               .flex
                 .py-1

@@ -10,13 +10,14 @@ require("channels")
 require("css/application.scss")
 
 document.addEventListener("turbolinks:load", function(event) {
+    /* We observe turbolinks:load instead of DOMContentLoaded because this way it gets called
+    *  every time the page changes */
     document.getElementsByClassName('language_selector')[0].addEventListener('change', (event)=>{
-        console.log(event.target.value);
-        if (document.location.search.length !== 0) { // If there is already a querystring
-            console.log("new: " + document.location.search.replace(/locale=[a-z]+/, 'locale=' + event.target.value));
+        if (document.location.search.length !== 0) {
+            // If there is already a querystring, we replace it
             document.location.search = document.location.search.replace(/locale=[a-z]+/, 'locale=' + event.target.value);
         } else {
-            console.log("new: " + '?locale=' + event.target.value);
+            // Otherwise we add the locale to the url
             document.location.search = '?locale=' + event.target.value;
         }
     });
