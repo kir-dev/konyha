@@ -8,7 +8,7 @@
 
   .field
     = f.label :category
-    = collection_select(:appliance_comment, :category, ApplianceComment.categories.to_a, Proc.new{|x| x[0]}, Proc.new{|x| x[0]}, prompt: true)
+    = collection_select(:appliance_comment, :category, ApplianceComment.categories.keys ,:to_s,:to_s, prompt: true)
 
   .field
     = f.label :body
