@@ -1,0 +1,24 @@
+hu:
+  activerecord:
+    models:
+      appliance: Készülék  #g
+      appliance_comment: A készülék megjegyzése  #g
+      kitchen: Konyha  #g
+
+    attributes:
+      appliance:
+        appliance_comments: A készülék megjegyzései  #g
+        category: Kategória  #g
+        description: Leírás  #g
+        kitchen: :activerecord.models.kitchen  #g
+        name: Név  #g
+        status: Állapot  #g
+
+      appliance_comment:
+        appliance: :activerecord.models.appliance  #g
+        body: Test  #g
+        category: Kategória  #g
+
+      kitchen:
+        appliances: Készülékek  #g
+        floor: Padló  #g

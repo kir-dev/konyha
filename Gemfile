@@ -60,3 +60,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "haml", "~> 5.1"
 # Use HAML as the default template engine for scaffolding
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
+# Use i18n_generators to generate model attribute names automatically
+gem 'i18n_generators', '~> 2.2'
