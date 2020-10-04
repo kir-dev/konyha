@@ -25,7 +25,7 @@ class AppliancesController < ApplicationController
   # POST /appliances
   # POST /appliances.json
   def create
-    @appliance = Appliance.new(appliance_params)
+    @appliance = Appliance.create(appliance_params)
 
     respond_to do |format|
       if @appliance.save
@@ -70,6 +70,8 @@ class AppliancesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def appliance_params
-      params.require(:appliance).permit(:name, :category, :status, :description, :kitchen_id)
+      parameters = params.require(:appliance).permit(:name, :category, :status, :description, :kitchen)
+      parameters[:kitchen] = Kitchen.find_by(floor: parameters[:kitchen])
+      return parameters
     end
 end
