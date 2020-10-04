@@ -1,5 +1,6 @@
 class AppliancesController < ApplicationController
   before_action :set_appliance, only: [:show, :edit, :update, :destroy]
+  before_action :set_kitchens, only: [:new, :edit]
 
   # GET /appliances
   # GET /appliances.json
@@ -68,10 +69,14 @@ class AppliancesController < ApplicationController
       @appliance = Appliance.find(params[:id])
     end
 
+    def set_kitchens
+      @kitchens = Kitchen.all
+    end
+
     # Only allow a list of trusted parameters through.
     def appliance_params
       parameters = params.require(:appliance).permit(:name, :category, :status, :description, :kitchen)
-      parameters[:kitchen] = Kitchen.find_by(floor: parameters[:kitchen])
+      parameters[:kitchen] = Kitchen.find(parameters[:kitchen])
       return parameters
     end
 end
