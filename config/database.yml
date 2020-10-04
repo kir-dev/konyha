@@ -18,6 +18,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: <%= ENV['DATABASE_HOST'] %>
+  port: 5433
   username: konyhasch
   password: CHANGE-ME
   # For details on connection pooling, see Rails configuration guide
