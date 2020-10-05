@@ -9,20 +9,6 @@ require("@rails/activestorage").start()
 require("channels")
 require("css/application.scss")
 
-document.addEventListener("turbolinks:load", function(event) {
-    /* We observe turbolinks:load instead of DOMContentLoaded because this way it gets called
-    *  every time the page changes */
-    document.getElementsByClassName('language_selector')[0].addEventListener('change', (event)=>{
-        if (document.location.search.length !== 0) {
-            // If there is already a querystring, we replace it
-            document.location.search = document.location.search.replace(/locale=[a-z]+/, 'locale=' + event.target.value);
-        } else {
-            // Otherwise we add the locale to the url
-            document.location.search = '?locale=' + event.target.value;
-        }
-    });
-});
-
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
