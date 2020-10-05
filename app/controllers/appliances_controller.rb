@@ -1,6 +1,6 @@
 class AppliancesController < ApplicationController
   before_action :set_appliance, only: [:show, :edit, :update, :destroy]
-  before_action :set_kitchens, only: [:new, :edit]
+  before_action :set_kitchens, only: [:new, :create, :edit, :update]
 
   # GET /appliances
   # GET /appliances.json
@@ -75,8 +75,6 @@ class AppliancesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def appliance_params
-      parameters = params.require(:appliance).permit(:name, :category, :status, :description, :kitchen)
-      parameters[:kitchen] = Kitchen.find(parameters[:kitchen])
-      return parameters
+      params.require(:appliance).permit(:name, :category, :status, :description, :kitchen_id)
     end
 end
