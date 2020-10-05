@@ -7,6 +7,16 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+num_users = 10;
+
+num_users.times do |t|
+  User.create(uid:   Faker::Internet.uuid,
+              name:  Faker::Name.name,
+              email: Faker::Internet.email,
+              floor: Faker::Number.between(from: 3, to: 18))
+end
+
+
 (3..18).each do |t|
   Kitchen.create(floor: t)
 end

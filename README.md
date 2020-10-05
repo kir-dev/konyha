@@ -3,6 +3,11 @@
 
 ## Local setup 
 
+You will need an AuthSCH application.
+You can register one at https://auth.sch.bme.hu/console/index.
+Set the redirect url to `http://localhost:3000/auth/oauth/callback`
+For development create your own `.env` file based on `.env.example`
+
 To setup the database:
 ```bash
 rails db:setup
