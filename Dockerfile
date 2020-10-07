@@ -12,7 +12,12 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt update && apt install yarn -y
 
-COPY . .
+COPY yarn.lock .
+COPY package.json .
+COPY app/javascript ./app/javascript
+
 RUN yarn install --check-files
+
+COPY . .
 
 CMD ["bundle","exec","rails","server"]

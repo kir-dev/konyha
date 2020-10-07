@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:13.0
+    restart: always
+    environment:
+      POSTGRES_USER: konyhasch
+      POSTGRES_PASSWORD: CHANGE-ME
+    ports:
+    - 5433:5432
+    volumes:
+    - database_folder:/var/lib/postgresql/data
+volumes:
+  database_folder:
+    external:
+      name: konyhasch_database
