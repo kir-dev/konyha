@@ -1,12 +1,6 @@
 class AppliancesController < ApplicationController
   before_action :set_appliance, only: [:show, :edit, :update, :destroy]
-  before_action :set_kitchens, only: [:new, :create, :edit, :update]
-
-  # GET /appliances
-  # GET /appliances.json
-  def index
-    @appliances = Appliance.all.includes(:kitchen)
-  end
+  before_action :set_kitchens, only: [:new, :edit, :update]
 
   # GET /appliances/1
   # GET /appliances/1.json
