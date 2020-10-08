@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   resources :appliance_comments
-  resources :appliances
+  resources :appliances, only: [:show, :new, :edit, :create, :update, :destroy]
   resources :kitchens
   resources :users
 

@@ -1,19 +1,19 @@
-= form_for @appliance do |f|
-  - if @appliance.errors.any?
-    = render 'layouts/errors', errors: @appliance.errors
+= form_for appliance do |f|
+  - if appliance.errors.any?
+    = render 'layouts/errors', errors: appliance.errors
 
   .mt-4
-    = f.label :name, "Eszköz neve", class: "block text-gray-700 text-sm font-bold mb-2"
+    = f.label :name, "Elnevezése", class: "block text-gray-700 text-sm font-bold mb-2"
     = f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
   .mt-1
-    = f.label :category, "Eszköz típusa", class: "block text-gray-700 text-sm font-bold mb-2"
+    = f.label :category, "Típusa", class: "block text-gray-700 text-sm font-bold mb-2"
     .relative
       = f.select :category, options_for_select(Appliance.categories.map {|k, v| [k, k]}), {}, class: "block shadow bg-white appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
       .pointer-events-none.absolute.inset-y-0.right-0.flex.items-center.px-2.text-gray-700
         %svg.fill-current.h-4.w-4{:viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
           %path{:d => "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"}
   .mt-1
-    = f.label :status, "Eszköz állapota", class: "block text-gray-700 text-sm font-bold mb-2"
+    = f.label :status, "Állapota", class: "block text-gray-700 text-sm font-bold mb-2"
     .relative
       = f.select :status, options_for_select(Appliance.statuses.map {|k, v| [k, k]}), {}, class: "block shadow bg-white appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
       .pointer-events-none.absolute.inset-y-0.right-0.flex.items-center.px-2.text-gray-700
@@ -25,7 +25,7 @@
   .mt-1
     = f.label :kitchen_id, "Konyha szintje", class: "block text-gray-700 text-sm font-bold mb-2"
     .relative
-      = f.select :kitchen_id, @kitchens.collect {|k| [k.floor, k.id]}, {}, class: "block shadow bg-white appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+      = f.select :kitchen_id, kitchens.collect {|k| [k.floor, k.id]}, {}, class: "block shadow bg-white appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
       .pointer-events-none.absolute.inset-y-0.right-0.flex.items-center.px-2.text-gray-700
         %svg.fill-current.h-4.w-4{:viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
           %path{:d => "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"}
