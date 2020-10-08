@@ -62,3 +62,8 @@ gem "haml", "~> 5.1"
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 # Use i18n_generators to generate model attribute names automatically
 gem 'i18n_generators', '~> 2.2'
+#use omniauth to integrate AuthSCH
+gem 'omniauth'
+gem 'omniauth-oauth2'
+
+gem 'dotenv-rails', groups: [:development, :test]
