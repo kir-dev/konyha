@@ -27,14 +27,15 @@
     .col-span-2.md:col-span-1.p-1.md:p-2
       = @appliance.description
 
-.my-6.flex.flex-wrap
+.my-4.flex.flex-wrap
   .flex-1.my-2
-    = link_to 'Vissza', kitchens_path, class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
+    = link_to 'Vissza', kitchen_path(@appliance.kitchen), class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
   .flex-1.text-right.my-2
     = link_to 'Módosítás', edit_appliance_path(@appliance), class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
 
-.my-4.text-xl.md:text-2xl
-  Megjegyzések:
+- unless @appliance.comments.empty?
+  .my-4.text-xl.md:text-2xl
+    Jelentések:
 
 - @appliance.comments.each do |comment|
   .transition-all.duration-150.px-2.py-2
@@ -55,5 +56,5 @@
           = comment.body
 
 
-.w-full.mt-6
+.w-full.mt-8
   = render 'appliance_comments/compact_form', appliance_comment: @new_appliance_comment
