@@ -8,7 +8,7 @@ module ApplianceStateMachine
       state :operational, initial: true
       state :broken
 
-      event :brake do
+      event :break do
         transitions from: :operational, to: :broken
       end
 

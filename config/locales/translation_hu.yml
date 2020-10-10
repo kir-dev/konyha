@@ -22,3 +22,7 @@ hu:
       kitchen:
         appliances: Készülékek  #g
         floor: Padló  #g
+
+  fix: Javítás
+  note: Megjegyzés
+  break: Meghibásodás
