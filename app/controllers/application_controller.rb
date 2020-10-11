@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  protect_from_forgery
 
   def logged_in?
     session[:user_id]
@@ -10,6 +10,5 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if logged_in?
   end
   helper_method :current_user
-
 
 end
