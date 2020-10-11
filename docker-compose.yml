@@ -20,7 +20,7 @@ services:
       - DATABASE_HOST=db
     restart: always
     ports:
-      - "3444:3000"
+      - "3111:3000"
     networks:
       - konyha_network
     depends_on:
