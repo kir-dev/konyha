@@ -1,21 +1,20 @@
 .md:col-span-1.md:flex.md:justify-end.bg-white
-  %nav.md:text-right
-    .flex.justify-between.items-center
+  %nav.md:text-right.w-full
+    .flex.justify-between.items-center.md:block.md:text-right
       %h1.font-bold.uppercase.p-4
         = link_to "KonyhaSCH", root_path, class: "hover:text-blue-700 tracking-widest"
       #burger.px-4.cursor-pointer.md:hidden
         %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24"}
           %path{:d => "M4 6h16M4 12h16M4 18h16"}
-    %ul#menu.text-md.mt-4.hidden.md:block
+    %ul#menu.text-md.mt-1.px-4.pb-4.md:mt-4.md:p-0.hidden.md:block
+      - navLinkClass = "block px-4 py-1 flex md:justify-end border-blue-300 border-l-4 md:border-l-0 md:border-r-4 transition duration-200 ease-in-out hover:text-blue-800 hover:bg-blue-100"
       %li.py-1
-        = link_to "Konyhák", kitchens_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
-      %li.py-2
-        = link_to "Eszközök", appliances_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
-      %li.py-3
-        = link_to "Eszköz kommentek", appliance_comments_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
-      %li.py-4
-        - if !logged_in?
-          = link_to "AuthSCH belépés", login_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
-        - else
-          = link_to current_user.name ,user_path(current_user), class: "block px-4 flex justify-end border-r-4 hover:text-blue-600"
-          = link_to "Kilépés" ,logout_path, class: "block px-4 flex justify-end border-r-4 hover:text-blue-600 font-bold"
+        = link_to "Konyhák", kitchens_path, class: navLinkClass
+      - if !logged_in?
+        %li.py-4
+          = link_to "AuthSCH bejelentkezés", login_path, class: navLinkClass
+      - else
+        %li.pt-4
+          = link_to current_user.name ,user_path(current_user), class: "#{navLinkClass} font-bold"
+        %li.py-1
+          = link_to "Kijelentkezés" ,logout_path, class: navLinkClass
