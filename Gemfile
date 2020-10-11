@@ -66,4 +66,4 @@ gem 'i18n_generators', '~> 2.2'
 gem 'omniauth'
 gem 'omniauth-oauth2'
 
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails'

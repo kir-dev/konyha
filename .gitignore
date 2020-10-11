@@ -34,5 +34,5 @@
 yarn-debug.log*
 .yarn-integrity
 /.idea
-/config/credentials/production.key
+/config/credentials/*
 .env

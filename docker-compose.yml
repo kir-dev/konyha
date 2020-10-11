@@ -18,8 +18,6 @@ services:
       - RAILS_ENV=production
       - KONYHA_DATABASE_PASSWORD=CHANGE-ME
       - DATABASE_HOST=db
-      - CLIENT_ID=1456
-      - CLIENT_SECRET=VERY-SECRET
     restart: always
     ports:
       - "3444:3000"
