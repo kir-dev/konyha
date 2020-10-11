@@ -16,8 +16,8 @@ COPY yarn.lock .
 COPY package.json .
 COPY app/javascript ./app/javascript
 
-RUN yarn install --check-files
-
 COPY . .
+
+RUN yarn install --check-files
 
 CMD ["bundle","exec","rails","server"]
