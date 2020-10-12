@@ -2,12 +2,10 @@
   .mt-4.bg-white.rounded-lg.p-3.md:p-8.shadow-lg.hover:shadow-2xl.transition-all.duration-150
     %h3.text-xl.font-bold Jelentés írása
     %p.text-sm.border-l-4.pl-2 Ha az eszköz állapotában változást vélsz felfedezni, adj le egy jelentést!
+    
     - if appliance_comment.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(appliance_comment.errors.count, "error")} prohibited this appliance_comment from being saved:"
-        %ul
-          - appliance_comment.errors.full_messages.each do |message|
-            %li= message
+      = render 'layouts/errors', errors: appliance_comment.errors
+    
     .mt-4
       = f.label :category, class: "block text-gray-700 text-sm font-bold mb-2"
       .relative
