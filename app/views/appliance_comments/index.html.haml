@@ -1,25 +1,15 @@
-%h1 Listing appliance_comments
+%h1.text-3xl.md:text-5xl.pb-8
+  Eszköz kommentek
 
-%table
-  %thead
-    %tr
-      %th Category
-      %th Body
-      %th Appliance
-      %th
-      %th
-      %th
 
-  %tbody
-    - @appliance_comments.each do |appliance_comment|
-      %tr
-        %td= appliance_comment.category
-        %td= appliance_comment.body
-        %td= appliance_comment.appliance
-        %td= link_to 'Show', appliance_comment
-        %td= link_to 'Edit', edit_appliance_comment_path(appliance_comment)
-        %td= link_to 'Destroy', appliance_comment, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Appliance comment', new_appliance_comment_path
+.w-full
+  - @appliance_comments.each do |comment|
+    - color = {fix: 'green', break: 'red', note: 'grey'}[comment.category.to_sym]
+    %div{class: "border-l-4 rounded-md border-#{color}-600 bg-white my-2 grid-cols-1"}
+      = link_to comment, class: "md:flex flex-wrap items-center cursor-pointer" do
+        .md:flex-auto.p-3.break-words
+          %span.md:text-lg
+            %strong
+              = comment.compact_body
+        .md:flex-auto.p-3.text-right
+          = l comment.created_at,format: :short
