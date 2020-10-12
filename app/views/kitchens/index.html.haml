@@ -3,7 +3,7 @@
 
 .grid.grid-cols-1.md:grid-cols-2.md:gap-4.mb-8
   - @kitchens.each do |kitchen|
-    = link_to kitchen, class: "p-4 mb-1 bg-white hover:bg-gray-100 shadow rounded-lg cursor-pointer" do
+    = link_to kitchen, class: "p-4 mb-1 bg-white hover:bg-gray-100 shadow-lg rounded-lg cursor-pointer" do
       %span.text-xl
         = "#{kitchen.floor}. szint"
       %span.p-1.float-right

@@ -1,25 +1,60 @@
-%p#notice= notice
+%h2.text-2xl.md:text-4xl.w-full
+  %strong Eszköz
 
-%p
-  %b Name:
-  = @appliance.name
-%p
-  %b Category:
-  = @appliance.category
-%p
-  %b Status:
-  = @appliance.status
-%p
-  %b Description:
-  = @appliance.description
-%p
-  %b Kitchen:
-  = @appliance.kitchen.floor
+.mt-4.bg-white.rounded-lg
+  .p-4.grid.grid-cols-2
+    %strong.col-span-2.md:col-span-1.p-1.md:p-2.md:border-b.md:border-gray-300
+      Elnevezés
+    .col-span-2.md:col-span-1.p-1.md:p-2.border-b.border-gray-300
+      = @appliance.name
+    %strong.col-span-1.p-1.md:p-2.border-b.border-gray-300
+      Típusa
+    .col-span-1.p-1.md:p-2.border-b.border-gray-300
+      = @appliance.category
+    %strong.col-span-1.p-1.md:p-2.border-b.border-gray-300
+      Állapota
+    .col-span-1.p-1.md:p-2.border-b.border-gray-300
+      - if @appliance.status == "broken"
+        .text-red-500= @appliance.status
+      - else
+        .text-green-500= @appliance.status
+    %strong.col-span-1.p-1.md:p-2.border-b.border-gray-300
+      Konyha:
+    .col-span-1.p-1.md:p-2.border-b.border-gray-300
+      = "#{@appliance.kitchen.floor}. szint"
+    %strong.col-span-2.md:col-span-1.p-1.md:p-2
+      Leírás
+    .col-span-2.md:col-span-1.p-1.md:p-2
+      = @appliance.description
+
+.my-4.flex.flex-wrap
+  .flex-1.my-2
+    = link_to 'Vissza', kitchen_path(@appliance.kitchen), class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
+  .flex-1.text-right.my-2
+    = link_to 'Módosítás', edit_appliance_path(@appliance), class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
+
+- unless @appliance.comments.empty?
+  .my-4.text-xl.md:text-2xl
+    Jelentések:
+
 - @appliance.comments.each do |comment|
-  %div
-    = link_to comment.body, appliance_comment_path(comment)
-= render 'appliance_comments/compact_form', {appliance_comment: @new_appliance_comment}
+  .transition-all.duration-150.px-2.py-2
+    .flex.flex-col.items-stretch.min-h-full.pb-4.mb-1.transition-all.duration-150.bg-white.rounded-lg.shadow.hover:shadow-lg
+      .grid.grid-cols-3.px-3.py-2
+        - color = "text-green-500" if comment.category == "fix"
+        - color = "text-red-500" if comment.category == "problem"
+        .col-span-1.text-sm.uppercase.font-bold.py-1{class: "#{color}"}
+          = comment.category
+        .col-span-2.md:grid.md:grid-cols-2.py-1
+          .text-sm.text-right.md:text-center
+            = l comment.created_at, format: :short
+          .text-sm.font-medium.text-blue-600.text-right
+            = link_to "Gyula bácsi", 'insert user path here', class: "hover:underline"
+      %hr.border-gray-300
+      = link_to appliance_comment_path(comment) do
+        %p.flex.flex-row.flex-wrap.w-full.px-5.py-2.text-sm.text-justify
+          = comment.body
 
-= link_to 'Edit', edit_appliance_path(@appliance)
-\|
-= link_to 'Back', appliances_path
+
+.w-full.mt-8
+  = render 'appliance_comments/compact_form', appliance_comment: @new_appliance_comment

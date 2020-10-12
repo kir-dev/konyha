@@ -1,11 +1,6 @@
 class AppliancesController < ApplicationController
   before_action :set_appliance, only: [:show, :edit, :update, :destroy]
-
-  # GET /appliances
-  # GET /appliances.json
-  def index
-    @appliances = Appliance.all.includes(:kitchen)
-  end
+  before_action :set_kitchens, only: [:new, :edit, :update]
 
   # GET /appliances/1
   # GET /appliances/1.json
@@ -66,6 +61,10 @@ class AppliancesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_appliance
       @appliance = Appliance.find(params[:id])
+    end
+
+    def set_kitchens
+      @kitchens = Kitchen.all
     end
 
     # Only allow a list of trusted parameters through.

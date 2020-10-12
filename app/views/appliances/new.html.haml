@@ -1,5 +1,4 @@
-%h1 New appliance
-
-= render 'form'
-
-= link_to 'Back', appliances_path
+%h1.text-xl.md:text-2xl Új eszköz
+= render 'form', {appliance: @appliance, kitchens: @kitchens}
+.mt-12
+  = link_to 'Vissza', @appliance, class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
