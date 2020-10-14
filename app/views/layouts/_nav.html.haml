@@ -10,6 +10,8 @@
       - navLinkClass = "block px-4 py-1 flex md:justify-end border-blue-300 border-l-4 md:border-l-0 md:border-r-4 transition duration-200 ease-in-out hover:text-blue-800 hover:bg-blue-100"
       %li.py-1
         = link_to "Konyhák", kitchens_path, class: navLinkClass
+      %li.py-1
+        = link_to "Friss jelentések", appliance_comments_path, class: navLinkClass
       - if !logged_in?
         %li.py-4
           = link_to "AuthSCH bejelentkezés", login_path, class: navLinkClass

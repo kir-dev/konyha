@@ -4,7 +4,9 @@ class ApplianceCommentsController < ApplicationController
   # GET /appliance_comments
   # GET /appliance_comments.json
   def index
-    @appliance_comments = ApplianceComment.all
+    @appliance_comments = Appliance.includes(:appliance_comments).all
+                                   .map{ |appliance| appliance.comments.last }
+                                   .sort_by(&:updated_at).reverse
   end
 
   # GET /appliance_comments/1

@@ -11,6 +11,10 @@ class ApplianceComment < ApplicationRecord
     appliance.valid_actions.push :note
   end
 
+  def compact_body
+    body.truncate(30)
+  end
+
   private
 
   def update_appliance_status
