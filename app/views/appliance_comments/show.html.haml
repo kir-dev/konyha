@@ -9,7 +9,7 @@
 %p
   %b Appliance:
   = @appliance_comment.appliance
-
+= image_tag @appliance_comment.thumb_nail
 = link_to 'Edit', edit_appliance_comment_path(@appliance_comment)
 \|
 = link_to 'Back', appliance_comments_path
