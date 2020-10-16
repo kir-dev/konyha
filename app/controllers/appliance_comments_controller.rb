@@ -71,6 +71,6 @@ class ApplianceCommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def appliance_comment_params
-      params.require(:appliance_comment).permit(:category, :body, :appliance_id)
+      params.require(:appliance_comment).permit(:category, :body, :appliance_id, :image)
     end
 end

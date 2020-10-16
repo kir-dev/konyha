@@ -1,5 +1,6 @@
 class ApplianceComment < ApplicationRecord
   belongs_to :appliance
+  has_one_attached :image
 
   enum category: %i[fix note break]
 
@@ -13,6 +14,10 @@ class ApplianceComment < ApplicationRecord
 
   def compact_body
     body.truncate(30)
+  end
+
+  def thumb_nail
+    image.variant(resize_and_pad: [200, 200])
   end
 
   private

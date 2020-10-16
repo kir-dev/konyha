@@ -25,9 +25,14 @@ services:
       - konyha_network
     depends_on:
       - db
+    volumes:
+      - public_folder:/konyhasch/public
 networks:
   konyha_network:
 volumes:
   database_folder:
     external:
       name: konyhasch_database
+  public_folder:
+    external:
+      name: konyhasch_public
