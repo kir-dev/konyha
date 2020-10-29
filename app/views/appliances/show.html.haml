@@ -15,17 +15,21 @@
       Állapota
     .col-span-1.p-1.md:p-2.border-b.border-gray-300
       - if @appliance.status == "broken"
-        .text-red-500= @appliance.status
+        .text-red-500= t @appliance.status
       - else
         .text-green-500= @appliance.status
     %strong.col-span-1.p-1.md:p-2.border-b.border-gray-300
       Konyha:
     .col-span-1.p-1.md:p-2.border-b.border-gray-300
       = "#{@appliance.kitchen.floor}. szint"
-    %strong.col-span-2.md:col-span-1.p-1.md:p-2
+    %strong.col-span-2.md:col-span-1.p-1.md:p-2.border-b.border-gray-300
       Leírás
-    .col-span-2.md:col-span-1.p-1.md:p-2
+    .col-span-2.md:col-span-1.p-1.md:p-2.border-b.border-gray-300
       = @appliance.description
+    %strong.col-span-2.md:col-span-1.p-1.md:p-2
+      Tulajdonos
+    .col-span-2.md:col-span-1.p-1.md:p-2.text-blue-600
+      = link_to @appliance.owner.name, user_path(@appliance.owner), class: "hover:underline"
 
 .my-4.flex.flex-wrap
   .flex-1.my-2
@@ -44,12 +48,12 @@
         - color = "text-green-500" if comment.category == "fix"
         - color = "text-red-500" if comment.category == "problem"
         .col-span-1.text-sm.uppercase.font-bold.py-1{class: "#{color}"}
-          = comment.category
+          = t comment.category
         .col-span-2.md:grid.md:grid-cols-2.py-1
           .text-sm.text-right.md:text-center
             = l comment.created_at, format: :short
           .text-sm.font-medium.text-blue-600.text-right
-            = link_to "Gyula bácsi", 'insert user path here', class: "hover:underline"
+            = link_to comment.owner.name, user_path(comment.owner), class: "hover:underline"
       %hr.border-gray-300
       = link_to appliance_comment_path(comment) do
         %p.flex.flex-row.flex-wrap.w-full.px-5.py-2.text-sm.text-justify
