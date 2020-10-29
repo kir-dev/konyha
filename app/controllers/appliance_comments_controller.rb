@@ -27,7 +27,8 @@ class ApplianceCommentsController < ApplicationController
   # POST /appliance_comments.json
   def create
     @appliance_comment = ApplianceComment.new(appliance_comment_params)
-
+    @appliance_comment.owner = current_user
+    authorize @appliance_comment
     respond_to do |format|
       if @appliance_comment.save
         format.html { redirect_to @appliance_comment, notice: 'Appliance comment was successfully created.' }
