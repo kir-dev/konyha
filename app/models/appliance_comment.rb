@@ -17,8 +17,10 @@ class ApplianceComment < ApplicationRecord
     body.truncate(30)
   end
 
-  def thumb_nail
-    image.variant(resize_and_pad: [200, 200])
+  def image
+    return '/default/comment.jpg' unless super.attached?
+
+    super
   end
 
   private
