@@ -11,17 +11,20 @@ class AppliancesController < ApplicationController
   # GET /appliances/new
   def new
     @appliance = Appliance.new
+    authorize @appliance
   end
 
   # GET /appliances/1/edit
   def edit
+    authorize @appliance
   end
 
   # POST /appliances
   # POST /appliances.json
   def create
     @appliance = Appliance.new(appliance_params)
-
+    @appliance.owner = current_user
+    authorize @appliance
     respond_to do |format|
       if @appliance.save
         format.html { redirect_to @appliance, notice: 'Appliance was successfully created.' }
@@ -36,6 +39,7 @@ class AppliancesController < ApplicationController
   # PATCH/PUT /appliances/1
   # PATCH/PUT /appliances/1.json
   def update
+    authorize @appliance
     respond_to do |format|
       if @appliance.update(appliance_params)
         format.html { redirect_to @appliance, notice: 'Appliance was successfully updated.' }
@@ -50,6 +54,7 @@ class AppliancesController < ApplicationController
   # DELETE /appliances/1
   # DELETE /appliances/1.json
   def destroy
+    authorize @appliance
     @appliance.destroy
     respond_to do |format|
       format.html { redirect_to appliances_url, notice: 'Appliance was successfully destroyed.' }
