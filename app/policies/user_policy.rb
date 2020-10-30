@@ -1,5 +1,4 @@
 class UserPolicy < ApplicationPolicy
-
   def index?
     user.present? and user.admin?
   end
@@ -11,13 +10,4 @@ class UserPolicy < ApplicationPolicy
   def update?
     user.present? and (user.admin? or record == user)
   end
-
-  def create?
-    false
-  end
-
-  def destroy?
-    false
-  end
-
 end

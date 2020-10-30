@@ -1,5 +1,4 @@
 class KitchenPolicy < ApplicationPolicy
-
   def create?
     false
   end
@@ -11,5 +10,4 @@ class KitchenPolicy < ApplicationPolicy
   def destroy?
     false
   end
-
 end

@@ -5,10 +5,10 @@ Rails.application.routes.draw do
 
 
   resources :appliance_comments
-  resources :appliances, only: [:show, :new, :edit, :create, :update, :destroy]
+  resources :appliances, only: %i[show new edit create update destroy]
   resources :kitchens
-  resources :users
+  resources :users, except: %i[new create destroy]
 
-  root "kitchens#index"
+  root 'kitchens#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

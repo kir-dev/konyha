@@ -1,6 +1,4 @@
 class AppliancePolicy < ApplicationPolicy
-
-
   def update?
     super and (record.owner == user or user.admin?)
   end
@@ -8,5 +6,4 @@ class AppliancePolicy < ApplicationPolicy
   def destroy?
     user.present? and (record.owner == user or user.admin?)
   end
-
 end
