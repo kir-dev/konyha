@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :kitchens
   resources :users, except: %i[new create destroy]
 
+  post 'appliances/:id/', to: 'appliances#fire_transition', as: :fire_transition
+
   root 'kitchens#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

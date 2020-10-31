@@ -21,4 +21,14 @@ class Appliance < ApplicationRecord
   def valid_action?(transition)
     valid_actions.include? transition
   end
+
+  def fire_transition(transition)
+    begin
+      send((transition + '!').to_sym) if valid_action?(transition.to_sym)
+    rescue AASM::InvalidTransition
+      errors.add(:category, :invalid)
+
+      raise ActiveRecord::RecordInvalid
+    end
+  end
 end

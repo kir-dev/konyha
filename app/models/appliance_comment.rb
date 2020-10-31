@@ -7,8 +7,6 @@ class ApplianceComment < ApplicationRecord
 
   validates :category, presence: true
 
-  before_save :update_appliance_status
-
   def available_actions
     appliance.valid_actions.push :note
   end
@@ -21,17 +19,5 @@ class ApplianceComment < ApplicationRecord
     return '/default/comment.jpg' unless super.attached?
 
     super
-  end
-
-  private
-
-  def update_appliance_status
-    begin
-      appliance.send((category + '!').to_sym) if appliance.valid_action?(category.to_sym)
-    rescue AASM::InvalidTransition
-      errors.add(:category, :invalid)
-
-      raise ActiveRecord::RecordInvalid
-    end
   end
 end
