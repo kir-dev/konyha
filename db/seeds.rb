@@ -34,11 +34,13 @@ Kitchen.all.each do |kitchen|
                                    category:    Appliance.categories.values.sample,
                                    status:      Appliance.statuses.values.sample,
                                    description: Faker::Lorem.sentence,
+                                   owner:       User.all.sample,
                                    kitchen:     kitchen)
     num_comment = Faker::Number.between(from: min_comment_per_appliance, to: max_comment_per_appliance)
     num_comment.times do |t|
       ApplianceComment.create(body:      Faker::Quote.famous_last_words,
                               category:  ApplianceComment.categories.values.sample,
+                              owner: User.all.sample,
                               appliance: appliance)
     end
     puts "  Added #{num_comment} comment to appliance: #{appliance.name} at floor #{kitchen.floor}"

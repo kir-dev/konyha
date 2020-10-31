@@ -1,5 +1,6 @@
 class Appliance < ApplicationRecord
   belongs_to :kitchen
+  belongs_to :owner, class_name: 'User', foreign_key: :user_id
   has_many :appliance_comments
 
   alias_attribute :comments, :appliance_comments

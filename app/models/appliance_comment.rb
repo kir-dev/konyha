@@ -1,5 +1,6 @@
 class ApplianceComment < ApplicationRecord
   belongs_to :appliance
+  belongs_to :owner, class_name: 'User', foreign_key: :user_id
   has_one_attached :image
 
   enum category: %i[fix note break]

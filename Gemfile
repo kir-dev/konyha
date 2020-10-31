@@ -65,5 +65,5 @@ gem 'i18n_generators', '~> 2.2'
 #use omniauth to integrate AuthSCH
 gem 'omniauth'
 gem 'omniauth-oauth2'
-
+gem "pundit"
 gem 'dotenv-rails'

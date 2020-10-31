@@ -17,17 +17,20 @@ class ApplianceCommentsController < ApplicationController
   # GET /appliance_comments/new
   def new
     @appliance_comment = ApplianceComment.new
+    authorize @appliance_comment
   end
 
   # GET /appliance_comments/1/edit
   def edit
+    authorize @appliance_comment
   end
 
   # POST /appliance_comments
   # POST /appliance_comments.json
   def create
     @appliance_comment = ApplianceComment.new(appliance_comment_params)
-
+    @appliance_comment.owner = current_user
+    authorize @appliance_comment
     respond_to do |format|
       if @appliance_comment.save
         format.html { redirect_to @appliance_comment, notice: 'Appliance comment was successfully created.' }
@@ -42,6 +45,7 @@ class ApplianceCommentsController < ApplicationController
   # PATCH/PUT /appliance_comments/1
   # PATCH/PUT /appliance_comments/1.json
   def update
+    authorize @appliance_comment
     respond_to do |format|
       if @appliance_comment.update(appliance_comment_params)
         format.html { redirect_to @appliance_comment, notice: 'Appliance comment was successfully updated.' }
@@ -56,6 +60,7 @@ class ApplianceCommentsController < ApplicationController
   # DELETE /appliance_comments/1
   # DELETE /appliance_comments/1.json
   def destroy
+    authorize @appliance_comment
     @appliance_comment.destroy
     respond_to do |format|
       format.html { redirect_to appliance_comments_url, notice: 'Appliance comment was successfully destroyed.' }

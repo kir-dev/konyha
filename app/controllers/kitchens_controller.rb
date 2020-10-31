@@ -15,17 +15,19 @@ class KitchensController < ApplicationController
   # GET /kitchens/new
   def new
     @kitchen = Kitchen.new
+    authorize @kitchen
   end
 
   # GET /kitchens/1/edit
   def edit
+    authorize @kitchen
   end
 
   # POST /kitchens
   # POST /kitchens.json
   def create
     @kitchen = Kitchen.new(kitchen_params)
-
+    authorize @kitchen
     respond_to do |format|
       if @kitchen.save
         format.html { redirect_to @kitchen, notice: 'Kitchen was successfully created.' }
@@ -40,6 +42,7 @@ class KitchensController < ApplicationController
   # PATCH/PUT /kitchens/1
   # PATCH/PUT /kitchens/1.json
   def update
+    authorize @kitchen
     respond_to do |format|
       if @kitchen.update(kitchen_params)
         format.html { redirect_to @kitchen, notice: 'Kitchen was successfully updated.' }
@@ -54,6 +57,7 @@ class KitchensController < ApplicationController
   # DELETE /kitchens/1
   # DELETE /kitchens/1.json
   def destroy
+    authorize @kitchen
     @kitchen.destroy
     respond_to do |format|
       format.html { redirect_to kitchens_url, notice: 'Kitchen was successfully destroyed.' }
