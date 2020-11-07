@@ -16,7 +16,7 @@ class ApplianceComment < ApplicationRecord
   end
 
   def image
-    return '/default/comment.jpg' unless super.attached?
+    return 'default/comment.jpg' unless super.attached?
 
     super
   end
