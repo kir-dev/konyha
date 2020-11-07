@@ -3,11 +3,9 @@ class ApplianceComment < ApplicationRecord
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
   has_one_attached :image
 
-  enum category: %i[fix note break]
+  enum category: %i[fix note break damage]
 
   validates :category, presence: true
-
-  before_save :update_appliance_status
 
   def available_actions
     appliance.valid_actions.push :note
@@ -21,17 +19,5 @@ class ApplianceComment < ApplicationRecord
     return '/default/comment.jpg' unless super.attached?
 
     super
-  end
-
-  private
-
-  def update_appliance_status
-    begin
-      appliance.send((category + '!').to_sym) if appliance.valid_action?(category.to_sym)
-    rescue AASM::InvalidTransition
-      errors.add(:category, :invalid)
-
-      raise ActiveRecord::RecordInvalid
-    end
   end
 end

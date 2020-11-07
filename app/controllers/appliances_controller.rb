@@ -1,5 +1,5 @@
 class AppliancesController < ApplicationController
-  before_action :set_appliance, only: [:show, :edit, :update, :destroy]
+  before_action :set_appliance, only: [:show, :edit, :update, :destroy, :fire_transition]
   before_action :set_kitchens, only: [:new, :edit, :update]
 
   # GET /appliances/1
@@ -36,12 +36,15 @@ class AppliancesController < ApplicationController
     end
   end
 
+
+
   # PATCH/PUT /appliances/1
   # PATCH/PUT /appliances/1.json
   def update
     authorize @appliance
     respond_to do |format|
       if @appliance.update(appliance_params)
+        @appliance.fire_transition(params[:transanction]) unless params[:transanction].nil?
         format.html { redirect_to @appliance, notice: 'Appliance was successfully updated.' }
         format.json { render :show, status: :ok, location: @appliance }
       else
@@ -62,10 +65,15 @@ class AppliancesController < ApplicationController
     end
   end
 
+  def fire_transition
+    @appliance.fire_transition(params[:transition])
+    redirect_to appliance_path @appliance
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appliance
-      @appliance = Appliance.find(params[:id])
+      @appliance = Appliance.includes(appliance_comments:[:owner]).find(params[:id])
     end
 
     def set_kitchens

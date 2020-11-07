@@ -17,7 +17,7 @@
       - if @appliance.status == "broken"
         .text-red-500= t @appliance.status
       - else
-        .text-green-500= @appliance.status
+        .text-green-500= t @appliance.status
     %strong.col-span-1.p-1.md:p-2.border-b.border-gray-300
       Konyha:
     .col-span-1.p-1.md:p-2.border-b.border-gray-300
@@ -30,6 +30,7 @@
       Tulajdonos
     .col-span-2.md:col-span-1.p-1.md:p-2.text-blue-600
       = link_to @appliance.owner.name, user_path(@appliance.owner), class: "hover:underline"
+= render "status_transition", appliance: @appliance
 
 .my-4.flex.flex-wrap
   .flex-1.my-2
@@ -52,9 +53,8 @@
         .col-span-2.md:grid.md:grid-cols-2.py-1
           .text-sm.text-right.md:text-center
             = l comment.created_at, format: :short
-          .text-sm.font-medium.text-blue-600.text-right
-            = link_to comment.owner.name, user_path(comment.owner), class: "hover:underline"
-      %hr.border-gray-300
+          .text-sm.font-medium.text-blue-600.text-righ= link_to comment.owner.name, user_path(comment.owner), class: "hover:underline"
+      %hr.border-gray-30
       = link_to appliance_comment_path(comment) do
         %p.flex.flex-row.flex-wrap.w-full.px-5.py-2.text-sm.text-justify
           = comment.body
