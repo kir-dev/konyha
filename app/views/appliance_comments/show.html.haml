@@ -1,15 +1,42 @@
-%p#notice= notice
 
-%p
-  %b Category:
-  = @appliance_comment.category
-%p
-  %b Body:
-  = @appliance_comment.body
-%p
-  %b Appliance:
-  = @appliance_comment.appliance
-= image_tag @appliance_comment.image
-= link_to 'Edit', edit_appliance_comment_path(@appliance_comment)
-\|
-= link_to 'Back', appliance_comments_path
+
+/ component
+- colors = {fix: 'green', break: 'red', note: 'orange'}
+- color = colors[@appliance_comment.category.to_sym]
+
+- icon = { fix: 'M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z', 
+          break: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z', 
+          note: 'M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z'}[@appliance_comment.category.to_sym]
+
+%div
+  .w-full-sm.bg-white.shadow-lg.rounded-lg.overflow-hidden.my-4
+    = image_tag url_for(@appliance_comment.image), class: "mx-auto my-auto d-block object-contain h-48 w-full"
+    
+    = content_tag :div, class: "flex items-center px-6 py-3 bg-#{color}-600" do
+
+      %svg.w-8.h-8{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{"clip-rule" => "evenodd", :d => icon, "fill-rule" => "evenodd"}
+
+
+
+      %h1.mx-3.text-white.font-semibold.text-lg #{@appliance_comment.category}
+    
+    .py-4.px-6
+      %h1.text-2xl.font-semibold.text-gray-800 #{@appliance_comment.appliance.name}
+      %p.py-2.text-lg.text-gray-700.break-normal #{@appliance_comment.body}
+    
+      .flex.items-center.mt-4.text-gray-700
+        %svg.h-6.w-6.fill-current{:viewBox => "0 0 512 512"}
+          %path{:d => "M239.208 343.937c-17.78 10.103-38.342 15.876-60.255 15.876-21.909 0-42.467-5.771-60.246-15.87C71.544 358.331 42.643 406 32 448h293.912c-10.639-42-39.537-89.683-86.704-104.063zM178.953 120.035c-58.479 0-105.886 47.394-105.886 105.858 0 58.464 47.407 105.857 105.886 105.857s105.886-47.394 105.886-105.857c0-58.464-47.408-105.858-105.886-105.858zm0 186.488c-33.671 0-62.445-22.513-73.997-50.523H252.95c-11.554 28.011-40.326 50.523-73.997 50.523z"}
+        %h1.px-2.text-sm #{@appliance_comment.owner.name}
+
+      .flex.items-center.mt-4.text-gray-700
+        %svg.h-6.w-6.fill-current{:viewBox => "0 0 512 512"}
+          %path{:d => "M256 32c-88.004 0-160 70.557-160 156.801C96 306.4 256 480 256 480s160-173.6 160-291.199C416 102.557 344.004 32 256 32zm0 212.801c-31.996 0-57.144-24.645-57.144-56 0-31.357 25.147-56 57.144-56s57.144 24.643 57.144 56c0 31.355-25.148 56-57.144 56z"}
+        %h1.px-2.text-sm #{@appliance_comment.appliance.kitchen.floor} .szint
+
+      .flex.items-center.mt-4.text-gray-700
+        %svg.h-6.w-6.fill-current{:viewBox => "0 0 512 512"}
+          %path{:d => "M437.332 80H74.668C51.199 80 32 99.198 32 122.667v266.666C32 412.802 51.199 432 74.668 432h362.664C460.801 432 480 412.802 480 389.333V122.667C480 99.198 460.801 80 437.332 80zM432 170.667L256 288 80 170.667V128l176 117.333L432 128v42.667z"}
+        %h1.px-2.text-sm #{@appliance_comment.owner.email}
+
