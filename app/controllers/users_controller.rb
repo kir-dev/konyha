@@ -14,11 +14,6 @@ class UsersController < ApplicationController
     authorize @user
   end
 
-  # GET /users/1/edit
-  def edit
-    authorize @user
-  end
-
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
