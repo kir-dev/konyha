@@ -53,7 +53,8 @@
         .col-span-2.md:grid.md:grid-cols-2.py-1
           .text-sm.text-right.md:text-center
             = l comment.created_at, format: :short
-          .text-sm.font-medium.text-blue-600.text-righ= link_to comment.owner.name, user_path(comment.owner), class: "hover:underline"
+          .text-sm.font-medium.text-blue-600.text-right
+            = link_to comment.owner.name, user_path(comment.owner), class: "hover:underline"
       %hr.border-gray-30
       = link_to appliance_comment_path(comment) do
         %p.flex.flex-row.flex-wrap.w-full.px-5.py-2.text-sm.text-justify

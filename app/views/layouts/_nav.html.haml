@@ -12,6 +12,9 @@
         = link_to "Konyhák", kitchens_path, class: navLinkClass
       %li.py-1
         = link_to "Friss jelentések", appliance_comments_path, class: navLinkClass
+      - if am_i_admin?
+        %li.py-1
+          = link_to "Felhasználók", users_path, class: navLinkClass
       - if !logged_in?
         %li.py-4
           = link_to "AuthSCH bejelentkezés", login_path, class: navLinkClass
