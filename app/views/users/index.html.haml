@@ -1,24 +1,21 @@
-%h1 Listing users
+%h2.text-3xl.md:text-4xl.mb-4
+  %strong A site felhasználói
 
-%table
-  %thead
-    %tr
-      %th Uid
-      %th Email
-      %th Name
-      %th Floor
-      %th
-      %th
-      %th
-
-  %tbody
-    - @users.each do |user|
-      %tr
-        -#%td= user.uid
-        %td= user.email
-        %td= user.name
-        %td= user.floor
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-
-%br
+.flex.flex-wrap.shadow.rounded-lg
+  .px-6.py-3.bg-blue-500.text-left.text-sm.font-medium.text-white.uppercase{class: "w-1/2"}
+    Felhasználó
+  .px-6.py-3.bg-blue-500.text-right.text-sm.font-medium.text-white.uppercase{class: "w-1/2"}
+    Szint
+  - @users.each do |user|
+    = link_to user, class: "py-4 px-6 hover:bg-blue-200 transition-all duration-300 flex flex-wrap bg-white divide-gray-200 w-full" do
+      .text-sm{class: "w-3/4"}
+        .font-medium.text-gray-900
+          = user.name
+          - if user.admin
+            %span.text-xs.bg-blue-600.text-white.py-1.px-2.rounded.align-top
+              admin
+        .text-gray-600
+          = user.email
+      .text-sm.text-gray-900{class: "w-1/4"}
+        .text-right
+          = user.floor

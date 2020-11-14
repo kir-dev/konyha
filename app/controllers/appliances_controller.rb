@@ -10,7 +10,7 @@ class AppliancesController < ApplicationController
 
   # GET /appliances/new
   def new
-    @appliance = Appliance.new
+    @appliance = Appliance.new(params.permit(:kitchen_id))
     authorize @appliance
   end
 
