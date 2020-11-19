@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_150606) do
+ActiveRecord::Schema.define(version: 2020_11_19_144941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 2020_10_29_150606) do
     t.index ["user_id"], name: "index_appliances_on_user_id"
   end
 
+  create_table "kitchen_assignments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "kitchen_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["kitchen_id"], name: "index_kitchen_assignments_on_kitchen_id"
+    t.index ["user_id"], name: "index_kitchen_assignments_on_user_id"
+  end
+
   create_table "kitchens", force: :cascade do |t|
     t.integer "floor"
     t.datetime "created_at", precision: 6, null: false
@@ -81,4 +90,6 @@ ActiveRecord::Schema.define(version: 2020_10_29_150606) do
   add_foreign_key "appliance_comments", "users"
   add_foreign_key "appliances", "kitchens"
   add_foreign_key "appliances", "users"
+  add_foreign_key "kitchen_assignments", "kitchens"
+  add_foreign_key "kitchen_assignments", "users"
 end
