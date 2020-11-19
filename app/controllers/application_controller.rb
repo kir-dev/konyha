@@ -9,11 +9,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :logged_in?
 
-  def am_i_admin?
-    current_user.present? and current_user.admin
-  end
-  helper_method :am_i_admin?
-
   def current_user
     @current_user ||= User.find(session[:user_id]) if logged_in?
   end
