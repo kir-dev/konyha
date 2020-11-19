@@ -30,13 +30,15 @@
       Tulajdonos
     .col-span-2.md:col-span-1.p-1.md:p-2.text-blue-600
       = link_to @appliance.owner.name, user_path(@appliance.owner), class: "hover:underline"
-= render "status_transition", appliance: @appliance
+- if policy(@appliance).update_status?
+  = render "status_transition", appliance: @appliance
 
 .my-4.flex.flex-wrap
   .flex-1.my-2
     = link_to 'Vissza', kitchen_path(@appliance.kitchen), class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
-  .flex-1.text-right.my-2
-    = link_to 'Módosítás', edit_appliance_path(@appliance), class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
+  - if policy(@appliance).edit?
+    .flex-1.text-right.my-2
+      = link_to 'Módosítás', edit_appliance_path(@appliance), class: "bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded"
 
 - unless @appliance.comments.empty?
   .my-4.text-xl.md:text-2xl

@@ -66,6 +66,7 @@ class AppliancesController < ApplicationController
   end
 
   def fire_transition
+    authorize @appliance, :update_status?
     @appliance.fire_transition(params[:transition])
     redirect_to appliance_path @appliance
   end
