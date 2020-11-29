@@ -4,7 +4,7 @@
 
 .w-full
   - @appliance_comments.each do |comment|
-    - color = {fix: 'green', break: 'red', note: 'grey'}[comment&.category&.to_sym]
+    - color = {fix: 'green', break: 'red', note: 'orange'}[comment&.category&.to_sym]
     %div{class: "border-l-4 rounded-md border-#{color}-600 bg-white my-2 grid-cols-1"}
       = link_to comment, class: "md:flex flex-wrap items-center cursor-pointer" do
         .md:flex-auto.p-3.break-words
